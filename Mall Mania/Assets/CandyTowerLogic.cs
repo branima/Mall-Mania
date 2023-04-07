@@ -23,6 +23,7 @@ public class CandyTowerLogic : MonoBehaviour
     public ParticleSystem confetti;
 
     public GameObject loliBase;
+    public GameObject plate;
 
     int step;
 
@@ -65,13 +66,13 @@ public class CandyTowerLogic : MonoBehaviour
     void EndFilling()
     {
         topLayerMenu.SetActive(false);
-        Invoke("StartLoliOrganizing", 1.5f);
+        Invoke("StartOrganizing", 1.5f);
     }
 
-    public void StartLoliOrganizing()
+    public void StartOrganizing()
     {
-        CameraSwitch.Instance.ChangeCamera();
         loliBase.SetActive(true);
+        plate.SetActive(true);
     }
 
     public void ShowNext()

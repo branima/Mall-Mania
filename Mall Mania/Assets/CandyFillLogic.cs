@@ -38,7 +38,7 @@ public class CandyFillLogic : MonoBehaviour
             {
                 transform.position = GetMouseWorldPos();
                 Rigidbody instance = Instantiate(activePrefab, transform.position + Vector3.forward * zModif, activePrefab.transform.rotation);
-                instance.AddForce(Vector3.down * 10f, ForceMode.VelocityChange);
+                instance.AddForce(Vector3.down * 10f + Vector3.forward * 5f, ForceMode.VelocityChange);
                 instance.transform.parent = candyParent;
                 lastSpawnTime = Time.time;
             }

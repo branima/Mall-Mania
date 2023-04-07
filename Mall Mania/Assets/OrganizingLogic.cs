@@ -18,6 +18,7 @@ public class OrganizingLogic : MonoBehaviour
 
     [Header("Candy")]
     public GameObject loliMenu;
+    public GameObject cupcakeMenu;
 
     public static OrganizingLogic Instance;
     void Awake() => Instance = this;
@@ -49,6 +50,14 @@ public class OrganizingLogic : MonoBehaviour
         Invoke("ChangeCamera", 0.25f);
         shelfMenu.SetActive(false);
         confetti.Play();
+    }
+
+    public void ShowCupcakeMenu()
+    {
+        //CameraSwitch.Instance.ChangeCamera();
+        Invoke("ChangeCamera", 0.25f);
+        loliMenu.SetActive(false);
+        cupcakeMenu.SetActive(true);
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
