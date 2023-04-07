@@ -8,15 +8,19 @@ public class BackgroundCustomizationLogic : MonoBehaviour
 {
 
     public GameObject mainBackgroundMenu;
-    public GameObject topDecorMenu;
-    public GameObject middleDecorMenu;
-    public GameObject bottomDecorMenu;
 
     public Image backgroundImage;
 
+    public ParticleSystem confetti;
+
+    [Header("Beach")]
+    public GameObject topDecorMenu;
+    public GameObject middleDecorMenu;
+    public GameObject bottomDecorMenu;
     public Rigidbody mannequin;
 
-    public ParticleSystem confetti;
+    [Header("Candy")]
+    public GameObject candyTowerCanvas;
 
     void OnEnable() => mainBackgroundMenu.SetActive(true);
 
@@ -46,6 +50,17 @@ public class BackgroundCustomizationLogic : MonoBehaviour
 
         Invoke("EnableMannequin", 1f);
         confetti.Play();
+    }
+
+    public void EndBackgroundPhaseCandy()
+    {
+        mainBackgroundMenu.SetActive(false);
+        foreach (Transform child in backgroundImage.transform)
+            child.GetComponent<EventTrigger>().enabled = false;
+
+        confetti.Play();
+
+        candyTowerCanvas.SetActive(true);
     }
 
     void EnableMannequin()

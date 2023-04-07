@@ -6,13 +6,10 @@ using UnityEngine.UI;
 public class BackgroundElementPlacement : MonoBehaviour
 {
 
-    Color transparentColor;
     int ogSiblingIdx;
 
-    void Start() => transparentColor = new Color(0, 0, 0, 0);
-
-    public void PointerEnter(Image item) => item.color = Color.black;
-    public void PointerExit(Image item) => item.color = transparentColor;
+    public void PointerEnter(Image item) => item.enabled = true;
+    public void PointerExit(Image item) => item.enabled = false;
 
     public void PointerDown(Transform item)
     {

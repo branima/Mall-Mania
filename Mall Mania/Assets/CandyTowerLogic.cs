@@ -5,6 +5,8 @@ using UnityEngine;
 public class CandyTowerLogic : MonoBehaviour
 {
 
+    public GameObject candyTower;
+
     public GameObject bottomLayerMenu;
     public GameObject bottomLayer;
 
@@ -16,7 +18,11 @@ public class CandyTowerLogic : MonoBehaviour
 
     public CandyFillLogic candyFillBox;
 
+    public GameObject organizingMenu;
+
     public ParticleSystem confetti;
+
+    public GameObject loliBase;
 
     int step;
 
@@ -25,6 +31,7 @@ public class CandyTowerLogic : MonoBehaviour
 
     void Start()
     {
+        candyTower.SetActive(true);
         bottomLayerMenu.SetActive(true);
         bottomLayer.SetActive(true);
         CameraSwitch.Instance.ChangeCamera();
@@ -51,14 +58,20 @@ public class CandyTowerLogic : MonoBehaviour
         topLayer.SetActive(true);
         topLayerMenu.SetActive(true);
         candyFillBox.SetCandyParent(topLayer.transform);
-        candyFillBox.SetZModifier(-0.5f);
+        candyFillBox.SetZModifier(-0.4f);
         candyFillBox.SetSpawnSpeed(10);
     }
 
     void EndFilling()
     {
         topLayerMenu.SetActive(false);
+        Invoke("StartLoliOrganizing", 1.5f);
+    }
+
+    public void StartLoliOrganizing()
+    {
         CameraSwitch.Instance.ChangeCamera();
+        loliBase.SetActive(true);
     }
 
     public void ShowNext()

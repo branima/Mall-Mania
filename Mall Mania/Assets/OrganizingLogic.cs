@@ -10,10 +10,17 @@ public class OrganizingLogic : MonoBehaviour
 
     GameObject activePrefab;
 
+    public ParticleSystem confetti;
+
+    [Header("Beach")]
     public GameObject tableMenu;
     public GameObject shelfMenu;
 
-    public ParticleSystem confetti;
+    [Header("Candy")]
+    public GameObject loliMenu;
+
+    public static OrganizingLogic Instance;
+    void Awake() => Instance = this;
 
     void Start() => mask = LayerMask.GetMask("OrgItem");
 
@@ -30,17 +37,23 @@ public class OrganizingLogic : MonoBehaviour
 
     public void ShowShelfMenu()
     {
-        CameraSwitch.Instance.ChangeCamera();
+        //CameraSwitch.Instance.ChangeCamera();
+        Invoke("ChangeCamera", 0.25f);
         tableMenu.SetActive(false);
         shelfMenu.SetActive(true);
     }
 
     public void FinalWindowPreview()
     {
-        CameraSwitch.Instance.ChangeCamera();
+        //CameraSwitch.Instance.ChangeCamera();
+        Invoke("ChangeCamera", 0.25f);
         shelfMenu.SetActive(false);
         confetti.Play();
     }
 
+    void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
+
     public void SetActivePrefab(GameObject newPrefab) => activePrefab = newPrefab;
+
+    public void CallMethodByName(string name) => Invoke(name, 0f);
 }
