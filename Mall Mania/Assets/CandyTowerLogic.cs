@@ -18,12 +18,11 @@ public class CandyTowerLogic : MonoBehaviour
 
     public CandyFillLogic candyFillBox;
 
-    public GameObject organizingMenu;
-
     public ParticleSystem confetti;
 
     public GameObject loliBase;
-    public GameObject plate;
+    public GameObject cakePlate;
+    public GameObject cupcakePlate;
 
     int step;
 
@@ -71,8 +70,9 @@ public class CandyTowerLogic : MonoBehaviour
 
     public void StartOrganizing()
     {
-        loliBase.SetActive(true);
-        plate.SetActive(true);
+        //loliBase.SetActive(true);
+        cakePlate.SetActive(true);
+        cupcakePlate.SetActive(true);
     }
 
     public void ShowNext()

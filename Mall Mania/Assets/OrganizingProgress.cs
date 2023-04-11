@@ -26,6 +26,7 @@ public class OrganizingProgress : MonoBehaviour
 
         if (done)
         {
+            OrganizingLogic.Instance.ResetActivePrefab();
             OrganizingLogic.Instance.CallMethodByName(stepChangeMethodName);
             this.enabled = false;
         }

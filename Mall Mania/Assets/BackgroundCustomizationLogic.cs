@@ -22,6 +22,9 @@ public class BackgroundCustomizationLogic : MonoBehaviour
     [Header("Candy")]
     public GameObject candyTowerCanvas;
 
+    [Header("Jewelry")]
+    public GameObject necklaceCanvas;
+
     void OnEnable() => mainBackgroundMenu.SetActive(true);
 
     public void ShowTopDecorMenu()
@@ -42,25 +45,36 @@ public class BackgroundCustomizationLogic : MonoBehaviour
         bottomDecorMenu.SetActive(true);
     }
 
-    public void EndBackgroundPhase()
-    {
-        topDecorMenu.SetActive(false);
-        foreach (Transform child in backgroundImage.transform)
-            child.GetComponent<EventTrigger>().enabled = false;
-
-        Invoke("EnableMannequin", 1f);
-        confetti.Play();
-    }
-
-    public void EndBackgroundPhaseCandy()
+    void EndBackgroundPhaseGeneral()
     {
         mainBackgroundMenu.SetActive(false);
         foreach (Transform child in backgroundImage.transform)
             child.GetComponent<EventTrigger>().enabled = false;
 
         confetti.Play();
+    }
+
+    public void EndBackgroundPhase()
+    {
+        EndBackgroundPhaseGeneral();
+
+        topDecorMenu.SetActive(false);
+        Invoke("EnableMannequin", 1f);
+    }
+
+    public void EndBackgroundPhaseCandy()
+    {
+        EndBackgroundPhaseGeneral();
 
         candyTowerCanvas.SetActive(true);
+    }
+
+    public void EndBackgroundPhaseJewelry()
+    {
+        EndBackgroundPhaseGeneral();
+        
+        necklaceCanvas.SetActive(true);
+        CameraSwitch.Instance.ChangeCamera();
     }
 
     void EnableMannequin()

@@ -18,7 +18,12 @@ public class OrganizingLogic : MonoBehaviour
 
     [Header("Candy")]
     public GameObject loliMenu;
+    public GameObject cakeMenu;
+    public GameObject cakeDecorMenu;
     public GameObject cupcakeMenu;
+    public GameObject chocoFountain;
+    public GameObject loliPlate1;
+    public GameObject loliPlate2;
 
     public static OrganizingLogic Instance;
     void Awake() => Instance = this;
@@ -56,13 +61,44 @@ public class OrganizingLogic : MonoBehaviour
     {
         //CameraSwitch.Instance.ChangeCamera();
         Invoke("ChangeCamera", 0.25f);
-        loliMenu.SetActive(false);
+        //loliMenu.SetActive(false);
+        cakeDecorMenu.SetActive(false);
         cupcakeMenu.SetActive(true);
+    }
+
+    public void DropChocofountain()
+    {
+        Invoke("ChangeCamera", 0.25f);
+        cupcakeMenu.SetActive(false);
+        chocoFountain.SetActive(true);
+
+        Invoke("ChangeCamera", 1f);
+        loliMenu.SetActive(true);
+        loliPlate1.SetActive(true);
+    }
+
+    public void ShowLoliPlate2()
+    {
+        loliPlate2.SetActive(true);
+        Invoke("ChangeCamera", 0.25f);
+    }
+
+    public void EndCandyLvl()
+    {
+        loliMenu.SetActive(false);
+        Invoke("ChangeCamera", 0.25f);
+    }
+
+    public void ShowCakeDecorMenu()
+    {
+        cakeMenu.SetActive(false);
+        cakeDecorMenu.SetActive(true);
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
 
     public void SetActivePrefab(GameObject newPrefab) => activePrefab = newPrefab;
+    public void ResetActivePrefab() => activePrefab = null;
 
     public void CallMethodByName(string name) => Invoke(name, 0f);
 }
