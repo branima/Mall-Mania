@@ -32,6 +32,13 @@ public class NecklaceCustomization : MonoBehaviour
     {
         jewelMenu.SetActive(false);
 
+        Transform originalPrefab = necklaceDollMainObject.transform.GetChild(0).GetChild(0);
+
+        Transform newNecklace = Instantiate(originalPrefab, originalPrefab.position, originalPrefab.rotation, necklaceDollMainObject.transform.GetChild(1));
+        newNecklace.localPosition = originalPrefab.localPosition;
+        newNecklace = Instantiate(originalPrefab, originalPrefab.position, originalPrefab.rotation, necklaceDollMainObject.transform.GetChild(2));
+        newNecklace.localPosition = originalPrefab.localPosition;
+
         confetti.Play();
         Invoke("ChangeCamera", 0.5f);
     }

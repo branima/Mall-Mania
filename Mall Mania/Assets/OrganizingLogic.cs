@@ -25,6 +25,12 @@ public class OrganizingLogic : MonoBehaviour
     public GameObject loliPlate1;
     public GameObject loliPlate2;
 
+    [Header("Jewelry")]
+    public GameObject ringsMenu;
+    public GameObject boxesMenu;
+    public GameObject ringsMenu2;
+    public GameObject watchesMenu;
+
     public static OrganizingLogic Instance;
     void Awake() => Instance = this;
 
@@ -93,6 +99,33 @@ public class OrganizingLogic : MonoBehaviour
     {
         cakeMenu.SetActive(false);
         cakeDecorMenu.SetActive(true);
+    }
+
+    public void ShowRingBoxMenu()
+    {
+        ringsMenu.SetActive(false);
+        boxesMenu.SetActive(true);
+        Invoke("ChangeCamera", 0.25f);
+    }
+
+    public void ShowRing2Menu()
+    {
+        boxesMenu.SetActive(false);
+        ringsMenu2.SetActive(true);
+        Invoke("ChangeCamera", 0.25f);
+    }
+
+    public void ShowWatchesMenu()
+    {
+        ringsMenu2.SetActive(false);
+        watchesMenu.SetActive(true);
+        Invoke("ChangeCamera", 0.25f);
+    }
+
+    public void EndJewelryLvl()
+    {
+        watchesMenu.SetActive(false);
+        Invoke("ChangeCamera", 0.25f);
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
