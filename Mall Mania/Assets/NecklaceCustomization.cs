@@ -13,6 +13,10 @@ public class NecklaceCustomization : MonoBehaviour
     public Transform itemPositions;
     int currPosition;
 
+    public GameObject ringPlate;
+    public GameObject ringBoxPlate;
+    public GameObject watchPlate;
+
     public ParticleSystem confetti;
 
     void Start()
@@ -41,9 +45,17 @@ public class NecklaceCustomization : MonoBehaviour
 
         confetti.Play();
         Invoke("ChangeCamera", 0.5f);
+        Invoke("EnablePlates", 1.25f);
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
+
+    void EnablePlates()
+    {
+        ringPlate.SetActive(true);
+        ringBoxPlate.SetActive(true);
+        watchPlate.SetActive(true);
+    }
 
     public void AddNewItem(GameObject itemPrefab)
     {

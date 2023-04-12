@@ -30,6 +30,11 @@ public class OrganizingLogic : MonoBehaviour
     public GameObject boxesMenu;
     public GameObject ringsMenu2;
     public GameObject watchesMenu;
+    public GameObject specialWatchesMenu;
+
+    public Transform ringBoxPositions;
+    public Transform ringBoxRingsPositions;
+    public GameObject specialWatchesStands;
 
     public static OrganizingLogic Instance;
     void Awake() => Instance = this;
@@ -110,9 +115,19 @@ public class OrganizingLogic : MonoBehaviour
 
     public void ShowRing2Menu()
     {
+        Invoke("DelayedBoxOpening", 0.4f);
+
         boxesMenu.SetActive(false);
         ringsMenu2.SetActive(true);
-        Invoke("ChangeCamera", 0.25f);
+    }
+
+    void DelayedBoxOpening()
+    {
+        Animation[] ringboxAnims = ringBoxPositions.GetComponentsInChildren<Animation>();
+        foreach (Animation item in ringboxAnims)
+            item.Play("ringBoxOpen");
+
+        ringBoxRingsPositions.gameObject.SetActive(true);
     }
 
     public void ShowWatchesMenu()
@@ -122,13 +137,33 @@ public class OrganizingLogic : MonoBehaviour
         Invoke("ChangeCamera", 0.25f);
     }
 
-    public void EndJewelryLvl()
+    public void EndMainJewelryOrganizing()
     {
         watchesMenu.SetActive(false);
         Invoke("ChangeCamera", 0.25f);
+        Invoke("ShowSpecialWatchesMenu", 1f);
+    }
+
+    public void EndJewelryLvl()
+    {
+        specialWatchesMenu.SetActive(false);
+        Invoke("ChangeCamera", 0.25f);
+    }
+
+    void ShowSpecialWatchesMenu()
+    {
+        ChangeCamera();
+        specialWatchesStands.SetActive(true);
+        specialWatchesMenu.SetActive(true);
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
+
+    public void OrganizingCompleteCameraChange()
+    {
+        confetti.Play();
+        Invoke("ChangeCamera", 0.25f);
+    }
 
     public void SetActivePrefab(GameObject newPrefab) => activePrefab = newPrefab;
     public void ResetActivePrefab() => activePrefab = null;
