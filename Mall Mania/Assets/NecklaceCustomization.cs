@@ -27,6 +27,7 @@ public class NecklaceCustomization : MonoBehaviour
 
     public void ShowJewelMenu()
     {
+        CameraSwitch.Instance.ChangeCamera();
         currPosition++;
         chainMenu.SetActive(false);
         jewelMenu.SetActive(true);
