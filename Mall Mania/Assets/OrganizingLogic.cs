@@ -20,6 +20,7 @@ public class OrganizingLogic : MonoBehaviour
     public GameObject loliMenu;
     public GameObject cakeMenu;
     public GameObject cakeDecorMenu;
+    public GameObject cakeDecorIndicators;
     public GameObject cupcakeMenu;
     public GameObject chocoFountain;
     public GameObject loliPlate1;
@@ -107,6 +108,7 @@ public class OrganizingLogic : MonoBehaviour
     {
         cakeMenu.SetActive(false);
         cakeDecorMenu.SetActive(true);
+        cakeDecorIndicators.SetActive(true);
     }
 
     public void ShowRingBoxMenu()
