@@ -31,13 +31,18 @@ public class CandyTowerLogic : MonoBehaviour
 
     void Start()
     {
+        Invoke("ShowBottomLayer", 0.5f);
+        Invoke("CameraChange", 0.75f);
+        Invoke("EnableFillBox", 0.75f);
+        step = 0;
+    }
+
+    void ShowBottomLayer()
+    {
         candyTower.SetActive(true);
         bottomLayerMenu.SetActive(true);
         bottomLayer.SetActive(true);
-        CameraSwitch.Instance.ChangeCamera();
         candyFillBox.SetCandyParent(bottomLayer.transform);
-        step = 0;
-        Invoke("EnableFillBox", 0.75f);
     }
 
     void ShowMiddleLayer()
@@ -65,7 +70,9 @@ public class CandyTowerLogic : MonoBehaviour
     void EndFilling()
     {
         topLayerMenu.SetActive(false);
-        Invoke("StartOrganizing", 1.5f);
+        Invoke("StartOrganizing", 0.75f);
+        Invoke("PlayConfetti", 0.25f);
+        //confetti.Play();
     }
 
     public void StartOrganizing()
@@ -78,7 +85,6 @@ public class CandyTowerLogic : MonoBehaviour
     public void ShowNext()
     {
         candyFillBox.gameObject.SetActive(false);
-        confetti.Play();
         CameraSwitch.Instance.ChangeCamera();
 
         step++;
@@ -95,6 +101,10 @@ public class CandyTowerLogic : MonoBehaviour
         else
             EndFilling();
     }
+
+    void CameraChange() => CameraSwitch.Instance.ChangeCamera();
+
+    void PlayConfetti() => confetti.Play();
 
     void EnableFillBox() => candyFillBox.gameObject.SetActive(true);
 

@@ -64,8 +64,9 @@ public class OrganizingLogic : MonoBehaviour
     {
         //CameraSwitch.Instance.ChangeCamera();
         Invoke("ChangeCamera", 0.25f);
+        Invoke("PlayConfetti", 0.75f);
         shelfMenu.SetActive(false);
-        confetti.Play();
+        //confetti.Play();
     }
 
     public void ShowCupcakeMenu()
@@ -83,7 +84,7 @@ public class OrganizingLogic : MonoBehaviour
         cupcakeMenu.SetActive(false);
         chocoFountain.SetActive(true);
 
-        Invoke("ChangeCamera", 1f);
+        Invoke("ChangeCamera", 1.25f);
         loliMenu.SetActive(true);
         loliPlate1.SetActive(true);
     }
@@ -98,6 +99,7 @@ public class OrganizingLogic : MonoBehaviour
     {
         loliMenu.SetActive(false);
         Invoke("ChangeCamera", 0.25f);
+        Invoke("PlayConfetti", 0.4f);
     }
 
     public void ShowCakeDecorMenu()
@@ -141,13 +143,15 @@ public class OrganizingLogic : MonoBehaviour
     {
         watchesMenu.SetActive(false);
         Invoke("ChangeCamera", 0.25f);
-        Invoke("ShowSpecialWatchesMenu", 1f);
+        Invoke("PlayConfetti", 0.5f);
+        Invoke("ShowSpecialWatchesMenu", 1.25f);
     }
 
     public void EndJewelryLvl()
     {
         specialWatchesMenu.SetActive(false);
         Invoke("ChangeCamera", 0.25f);
+        Invoke("PlayConfetti", 0.75f);
     }
 
     void ShowSpecialWatchesMenu()
@@ -158,12 +162,9 @@ public class OrganizingLogic : MonoBehaviour
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
+    void PlayConfetti() => confetti.Play();
 
-    public void OrganizingCompleteCameraChange()
-    {
-        confetti.Play();
-        Invoke("ChangeCamera", 0.25f);
-    }
+    public void SpecialWatchesCameraChange() => Invoke("ChangeCamera", 0.25f);
 
     public void SetActivePrefab(GameObject newPrefab) => activePrefab = newPrefab;
     public void ResetActivePrefab() => activePrefab = null;

@@ -72,9 +72,8 @@ public class BackgroundCustomizationLogic : MonoBehaviour
     public void EndBackgroundPhaseJewelry()
     {
         EndBackgroundPhaseGeneral();
-        
+
         necklaceCanvas.SetActive(true);
-        CameraSwitch.Instance.ChangeCamera();
     }
 
     void EnableMannequin()

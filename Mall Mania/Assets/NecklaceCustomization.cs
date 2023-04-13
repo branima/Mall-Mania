@@ -21,9 +21,12 @@ public class NecklaceCustomization : MonoBehaviour
 
     void Start()
     {
-        necklaceDollMainObject.SetActive(true);
         currPosition = 0;
+        Invoke("ChangeCamera", 0.35f);
+        Invoke("ShowNecklaceDolls", 0.35f);
     }
+
+    void ShowNecklaceDolls() => necklaceDollMainObject.SetActive(true);
 
     public void ShowJewelMenu()
     {
@@ -44,9 +47,10 @@ public class NecklaceCustomization : MonoBehaviour
         newNecklace = Instantiate(originalPrefab, originalPrefab.position, originalPrefab.rotation, necklaceDollMainObject.transform.GetChild(2));
         newNecklace.localPosition = originalPrefab.localPosition;
 
-        confetti.Play();
-        Invoke("ChangeCamera", 0.5f);
-        Invoke("EnablePlates", 1.25f);
+        //confetti.Play();
+
+        ChangeCamera();
+        Invoke("EnablePlates", 0.75f);
     }
 
     void ChangeCamera() => CameraSwitch.Instance.ChangeCamera();
