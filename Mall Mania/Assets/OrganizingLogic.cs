@@ -34,6 +34,7 @@ public class OrganizingLogic : MonoBehaviour
 
     public Transform ringBoxPositions;
     public Transform ringBoxRingsPositions;
+    public Transform ringBoxRingsIndicators;
     public GameObject specialWatchesStands;
 
     public static OrganizingLogic Instance;
@@ -130,6 +131,7 @@ public class OrganizingLogic : MonoBehaviour
             item.Play("ringBoxOpen");
 
         ringBoxRingsPositions.gameObject.SetActive(true);
+        ringBoxRingsIndicators.gameObject.SetActive(true);
     }
 
     public void ShowWatchesMenu()

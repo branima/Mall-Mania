@@ -6,6 +6,7 @@ public class OrganizingProgress : MonoBehaviour
 {
 
     public Transform positions;
+    public Transform indicatorPositions;
 
     bool done;
 
@@ -18,10 +19,9 @@ public class OrganizingProgress : MonoBehaviour
         foreach (Transform position in positions)
         {
             if (position.childCount == 0)
-            {
                 done = false;
-                break;
-            }
+            else if (indicatorPositions != null)
+                indicatorPositions.GetChild(position.GetSiblingIndex()).gameObject.SetActive(false);
         }
 
         if (done)
