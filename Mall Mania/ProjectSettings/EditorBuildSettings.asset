@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scenes/Beach Level.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Game/Scenes/Gameplay Beach Level.unity
+    guid: 4969e8b21bcbceb4890842b2ea254a7f
+  - enabled: 1
+    path: Assets/Game/Scenes/Gameplay Candy Level.unity
+    guid: 879e8dc16086fb84c836192207b584ac
+  - enabled: 1
+    path: Assets/Game/Scenes/Gameplay Jewelry Level.unity
+    guid: e377cff7d5440cd47825a045882dc640
   m_configObjects: {}
