@@ -7,7 +7,7 @@ public class BeginningTransition : MonoBehaviour
 
     public List<GameObject> objectsToBeEnabled;
 
-    void Start() => Invoke("Begin", 0.5f);
+    void Start() => Invoke("Begin", 0.75f);
 
     void Begin()
     {
