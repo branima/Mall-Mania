@@ -69,7 +69,7 @@ public class OrganizingLogic : MonoBehaviour
         Invoke("PlayConfetti", 0.75f);
         shelfMenu.SetActive(false);
         //confetti.Play();
-        Invoke("NextLevel", 2f);
+        //Invoke("NextLevel", 2f);
     }
 
     public void ShowCupcakeMenu()
@@ -103,7 +103,7 @@ public class OrganizingLogic : MonoBehaviour
         loliMenu.SetActive(false);
         Invoke("ChangeCamera", 0.25f);
         Invoke("PlayConfetti", 0.4f);
-        Invoke("NextLevel", 2f);
+        //Invoke("NextLevel", 2f);
     }
 
     public void ShowCakeDecorMenu()
@@ -158,7 +158,7 @@ public class OrganizingLogic : MonoBehaviour
         specialWatchesMenu.SetActive(false);
         Invoke("ChangeCamera", 0.25f);
         Invoke("PlayConfetti", 0.75f);
-        Invoke("NextLevel", 2f);
+        //Invoke("NextLevel", 2f);
     }
 
     void ShowSpecialWatchesMenu()
