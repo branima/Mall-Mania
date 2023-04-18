@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Tabtale.TTPlugins;
 public class GameManager : MonoBehaviour
 {
     
     public static GameManager Instance;
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        TTPCore.Setup();
+        Instance = this;
+    }
 
     public void NextLevel() => LoadLevel((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
     public void Retry() => LoadLevel(SceneManager.GetActiveScene().buildIndex);
